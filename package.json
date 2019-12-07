@@ -56,7 +56,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "cd client && npm run test"
+      "pre-push": "npm run test"
     }
   }
 }
