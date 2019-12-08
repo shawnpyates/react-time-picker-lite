@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+
 import styled from 'styled-components';
 
 const AmPmButton = styled.button`
@@ -7,20 +9,20 @@ const AmPmButton = styled.button`
   cursor: pointer;
 
   ${(props) => `
-    height: ${props.height}
+    height: ${props.height};
     width: ${props.width};
-    font-size: ${props.fontSize}
-    ${
-  props.isHighlighted
-    ? `
+    font-size: ${props.fontSize};
+    ${(
+      props.isHighlighted
+        ? `
           background-color: ${props.highlightedBackgroundColor};
           color: ${props.highlightedTextColor};
         `
-    : `
+        : `
           background-color: ${props.nonHighlightedBackgroundColor};
           color: ${props.nonHighlightedTextColor};
         `
-}
+    )}
   `}
 `;
 
