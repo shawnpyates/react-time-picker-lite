@@ -11,16 +11,16 @@ const AmPmButton = styled.button`
     width: ${props.width};
     font-size: ${props.fontSize}
     ${
-      props.isHighlighted
-        ? `
+  props.isHighlighted
+    ? `
           background-color: ${props.highlightedBackgroundColor};
           color: ${props.highlightedTextColor};
         `
-        : `
+    : `
           background-color: ${props.nonHighlightedBackgroundColor};
           color: ${props.nonHighlightedTextColor};
         `
-    }
+}
   `}
 `;
 
