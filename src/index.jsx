@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import TimePickerUi from "./TimePickerUi";
+import TimePickerUi from './TimePickerUi';
 
 import {
   addTimeChar,
@@ -11,33 +11,45 @@ import {
   INITIAL_TIME_CHARS,
   isInvalidTimeInput,
   resetTimeValues,
-} from "./timeInputHandlers";
+} from './timeInputHandlers';
 
 const DELETE_KEY_CODE = 8;
 const VALID_TIME_INPUT = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/;
 
 const getUpdatedTimeChars = charStr => {
-  const hourColumn = charStr.split(":")[0];
-  return hourColumn.length > 1 ? hourColumn.split("") : ["-", hourColumn];
+  const hourColumn = charStr.split(':')[0];
+  return hourColumn.length > 1 ? hourColumn.split('') : ['-', hourColumn];
 };
 
-function TimePicker() {
+function TimePicker({
+  wrapperWidth,
+  wrapperHeight,
+  inputWidth,
+  inputHeight,
+  backgroundColorOnBlur,
+  textColorOnBlur,
+  backgroundColorOnFocus,
+  textColorOnFocus,
+  onError = () => null,
+}) {
   const [timeCharsArray, setTimeCharsArray] = useState(INITIAL_TIME_CHARS);
   const [timeCharsString, setTimeCharsString] = useState(null);
   const [isTimePickerEnabled, setIsTimePickerEnabled] = useState(false);
   const [isPmSelected, setIsPmSelected] = useState(false);
 
   const enableTimePicker = () => {
-    const updatedTimeCharsArray = timeCharsString
-      ? getUpdatedTimeChars(timeCharsString)
-      : timeCharsArray;
+    const updatedTimeCharsArray = (
+      timeCharsString
+        ? getUpdatedTimeChars(timeCharsString)
+        : timeCharsArray
+    );
     setIsTimePickerEnabled(true);
     setTimeCharsArray(updatedTimeCharsArray);
   };
 
   const handleTimePickerKeyUp = ev => {
     const { key, keyCode } = ev;
-    if (keyCode === DELETE_KEY_CODE && timeCharsArray[4] !== "-") {
+    if (keyCode === DELETE_KEY_CODE && timeCharsArray[4] !== '-') {
       setTimeCharsArray(deleteTimeChar(timeCharsArray));
       return;
     }
@@ -58,9 +70,7 @@ function TimePicker() {
     const { charStr, shouldSelectPm } = convertTo12HourFormat(timeString);
     setIsTimePickerEnabled(false);
     setTimeCharsString(charStr);
-    setIsPmSelected(
-      shouldSelectPm !== undefined ? shouldSelectPm : isPmSelected
-    );
+    setIsPmSelected(shouldSelectPm !== undefined ? shouldSelectPm : isPmSelected);
   };
 
   const toggleAmPm = (ev, shouldSelectPm) => {
@@ -78,6 +88,15 @@ function TimePicker() {
         timeCharsArray={timeCharsArray}
         timeCharsString={timeCharsString}
         toggleAmPm={toggleAmPm}
+        wrapperWidth={wrapperWidth}
+        wrapperHeight={wrapperHeight}
+        inputWidth={inputWidth}
+        inputHeight={inputHeight}
+        backgroundColorOnBlur={backgroundColorOnBlur}
+        textColorOnBlur={textColorOnBlur}
+        backgroundColorOnFocus={backgroundColorOnFocus}
+        textColorOnFocus={textColorOnFocus}
+        onError={onError}
       />
     </div>
   );
