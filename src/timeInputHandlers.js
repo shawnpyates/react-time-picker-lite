@@ -61,12 +61,6 @@ const isInvalidTimeInput = (key, timeChars) => Number.isNaN(Number(key))
   || (timeChars[3] === '-' && areFirstTwoCharsInvalid(key, timeChars))
   || isFourthCharNotPermitted(timeChars);
 
-const resetTimeValues = () => ({
-  calendarDate: null,
-  timeChars: INITIAL_TIME_CHARS,
-  timeCharsAsString: null,
-});
-
 const convertTo12HourFormat = (timeString) => {
   const hourColumn = Number(timeString.split(':')[0]);
   if (hourColumn === 0) {
@@ -116,7 +110,6 @@ module.exports = {
   get24HourTime,
   INITIAL_TIME_CHARS,
   isInvalidTimeInput,
-  resetTimeValues,
   TEST_ONLY: {
     areFirstTwoCharsInvalid,
     isFourthCharNotPermitted,

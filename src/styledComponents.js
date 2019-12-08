@@ -1,7 +1,37 @@
 import styled from 'styled-components';
 
+const AmPmButton = styled.button`
+  margin: 10px 3px;
+  border-radius: 3px;
+  padding: 3px;
+  cursor: pointer;
+
+  ${(props) => `
+    height: ${props.height}
+    width: ${props.width};
+    font-size: ${props.fontSize}
+    ${
+      props.isHighlighted
+        ? `
+          background-color: ${props.highlightedBackgroundColor};
+          color: ${props.highlightedTextColor};
+        `
+        : `
+          background-color: ${props.nonHighlightedBackgroundColor};
+          color: ${props.nonHighlightedTextColor};
+        `
+    }
+  `}
+`;
+
 const TimePickerWrapper = styled.div`
-  max-width: 30%;
+  display: inline-block;
+
+  ${(props) => `
+    height: ${props.height};
+    width: ${props.width};
+    font-family: ${props.font};
+  `}
 `;
 
 const TimePickerInput = styled.input`
@@ -13,16 +43,25 @@ const TimePickerInput = styled.input`
   background-color: #000080;
   text-align: center;
   font-weight: 400;
+  color: transparent;
   cursor: pointer;
 
-  &:focus {
-    color: transparent;
-    background-color: #FFF;
-    text-shadow: 0 0 0 #000080;
-  }
+  ${(props) => `
+    height: ${props.height};
+    width: ${props.width};
+    background-color: ${props.backgroundColorOnBlur};
+    text-shadow: 0 0 0 ${props.textColorOnBlur};
+    font-size: ${props.fontSize};
+
+    &:focus {
+      background-color: ${props.backgroundColorOnFocus};
+      text-shadow: 0 0 0 ${props.textColorOnFocus};
+    }
+  `}
 `;
 
 module.exports = {
+  AmPmButton,
   TimePickerWrapper,
   TimePickerInput,
 };
