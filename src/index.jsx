@@ -22,14 +22,24 @@ const getUpdatedTimeChars = (charArr, charStr) => {
 };
 
 function TimePicker({
+  placeholderText,
   wrapperWidth,
   wrapperHeight,
   inputWidth,
   inputHeight,
+  inputFontSize,
   backgroundColorOnBlur,
   textColorOnBlur,
   backgroundColorOnFocus,
   textColorOnFocus,
+  font,
+  amPmButtonHeight,
+  amPmButtonWidth,
+  amPmButtonFontSize,
+  amPmButtonHighlightedBackgroundColor,
+  amPmButtonNonHighlightedBackgroundColor,
+  amPmButtonHighlightedTextColor,
+  amPmButtonNonHighlightedTextColor,
   onError = () => null,
   onSuccess = () => null,
   shouldUse24HourMode = false,
@@ -84,13 +94,20 @@ function TimePicker({
     const { charStr, shouldSelectPm } = convertTo12HourFormat(timeString);
     setTimeCharsString(charStr);
     setIsPmSelected(shouldSelectPm !== undefined ? shouldSelectPm : isPmSelected);
-    const timeToReturn = get24HourTime(charStr);
+    const timeToReturn = get24HourTime(charStr, shouldSelectPm || isPmSelected);
     onSuccess(timeToReturn);
   };
 
   const toggleAmPm = (ev, shouldSelectPm) => {
     ev.preventDefault();
+    if (isPmSelected === shouldSelectPm) {
+      return;
+    }
     setIsPmSelected(shouldSelectPm);
+    if (timeCharsString) {
+      const timeToReturn = get24HourTime(timeCharsString, shouldSelectPm);
+      onSuccess(timeToReturn);
+    }
   };
 
   return (
@@ -100,6 +117,7 @@ function TimePicker({
         handleBlur={handleBlur}
         handleTimePickerKeyUp={handleTimePickerKeyUp}
         isTimePickerEnabled={isTimePickerEnabled}
+        placeholderText={placeholderText}
         timeCharsArray={timeCharsArray}
         timeCharsString={timeCharsString}
         isPmSelected={isPmSelected}
@@ -109,10 +127,19 @@ function TimePicker({
         wrapperHeight={wrapperHeight}
         inputWidth={inputWidth}
         inputHeight={inputHeight}
+        inputFontSize={inputFontSize}
         backgroundColorOnBlur={backgroundColorOnBlur}
         textColorOnBlur={textColorOnBlur}
         backgroundColorOnFocus={backgroundColorOnFocus}
         textColorOnFocus={textColorOnFocus}
+        font={font}
+        amPmButtonHeight={amPmButtonHeight}
+        amPmButtonWidth={amPmButtonWidth}
+        amPmButtonFontSize={amPmButtonFontSize}
+        amPmButtonHighlightedBackgroundColor={amPmButtonHighlightedBackgroundColor}
+        amPmButtonNonHighlightedBackgroundColor={amPmButtonNonHighlightedBackgroundColor}
+        amPmButtonHighlightedTextColor={amPmButtonHighlightedTextColor}
+        amPmButtonNonHighlightedTextColor={amPmButtonNonHighlightedTextColor}
       />
     </div>
   );
