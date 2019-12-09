@@ -72,12 +72,16 @@ function TimePicker({
       setTimeCharsArray(deleteTimeChar(timeCharsArray));
       return;
     }
+
+    // prevent input of chars that will create an invalid time input
     if (isInvalidTimeInput(key, timeCharsArray)) {
       return;
     }
+
     setTimeCharsArray(addTimeChar(timeCharsArray, key));
   };
 
+  // when unfocused, trigger onSuccess hook if input contains valid time, onError hook if invalid
   const handleBlur = () => {
     const timeString = formatTimeChars(timeCharsArray);
     if (!VALID_TIME_INPUT.test(timeString)) {
@@ -104,8 +108,11 @@ function TimePicker({
       return;
     }
     setIsPmSelected(shouldSelectPm);
+
+    // if am/pm toggled and input contains valid time, trigger onSuccess hook
     if (timeCharsString) {
       const timeToReturn = get24HourTime(timeCharsString, shouldSelectPm);
+      
       onSuccess(timeToReturn);
     }
   };

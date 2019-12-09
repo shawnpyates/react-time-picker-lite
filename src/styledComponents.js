@@ -1,4 +1,5 @@
 /* eslint-disable indent */
+// (eslint handles indentations inside of template literals poorly)
 
 import styled from 'styled-components';
 
@@ -36,6 +37,7 @@ const TimePickerWrapper = styled.div`
   `}
 `;
 
+// making color transparent and setting text-shadow instead makes text cursor invisible
 const TimePickerInput = styled.input`
   width: 100%;
   height: 20px;
