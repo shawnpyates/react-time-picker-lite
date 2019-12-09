@@ -8,6 +8,10 @@
       "@babel/preset-react"
     ]
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:shawnpyates/react-time-picker-lite.git"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
