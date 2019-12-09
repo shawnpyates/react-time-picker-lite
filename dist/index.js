@@ -37,14 +37,24 @@ var getUpdatedTimeChars = function getUpdatedTimeChars(charArr, charStr) {
 };
 
 function TimePicker(_ref) {
-  var wrapperWidth = _ref.wrapperWidth,
+  var placeholderText = _ref.placeholderText,
+      wrapperWidth = _ref.wrapperWidth,
       wrapperHeight = _ref.wrapperHeight,
       inputWidth = _ref.inputWidth,
       inputHeight = _ref.inputHeight,
+      inputFontSize = _ref.inputFontSize,
       backgroundColorOnBlur = _ref.backgroundColorOnBlur,
       textColorOnBlur = _ref.textColorOnBlur,
       backgroundColorOnFocus = _ref.backgroundColorOnFocus,
       textColorOnFocus = _ref.textColorOnFocus,
+      font = _ref.font,
+      amPmButtonHeight = _ref.amPmButtonHeight,
+      amPmButtonWidth = _ref.amPmButtonWidth,
+      amPmButtonFontSize = _ref.amPmButtonFontSize,
+      amPmButtonHighlightedBackgroundColor = _ref.amPmButtonHighlightedBackgroundColor,
+      amPmButtonNonHighlightedBackgroundColor = _ref.amPmButtonNonHighlightedBackgroundColor,
+      amPmButtonHighlightedTextColor = _ref.amPmButtonHighlightedTextColor,
+      amPmButtonNonHighlightedTextColor = _ref.amPmButtonNonHighlightedTextColor,
       _ref$onError = _ref.onError,
       onError = _ref$onError === void 0 ? function () {
     return null;
@@ -128,13 +138,23 @@ function TimePicker(_ref) {
 
     setTimeCharsString(charStr);
     setIsPmSelected(shouldSelectPm !== undefined ? shouldSelectPm : isPmSelected);
-    var timeToReturn = (0, _timeInputHandlers.get24HourTime)(charStr);
+    var timeToReturn = (0, _timeInputHandlers.get24HourTime)(charStr, shouldSelectPm || isPmSelected);
     onSuccess(timeToReturn);
   };
 
   var toggleAmPm = function toggleAmPm(ev, shouldSelectPm) {
     ev.preventDefault();
+
+    if (isPmSelected === shouldSelectPm) {
+      return;
+    }
+
     setIsPmSelected(shouldSelectPm);
+
+    if (timeCharsString) {
+      var timeToReturn = (0, _timeInputHandlers.get24HourTime)(timeCharsString, shouldSelectPm);
+      onSuccess(timeToReturn);
+    }
   };
 
   return _react.default.createElement("div", null, _react.default.createElement(_TimePickerUi.default, {
@@ -142,6 +162,7 @@ function TimePicker(_ref) {
     handleBlur: handleBlur,
     handleTimePickerKeyUp: handleTimePickerKeyUp,
     isTimePickerEnabled: isTimePickerEnabled,
+    placeholderText: placeholderText,
     timeCharsArray: timeCharsArray,
     timeCharsString: timeCharsString,
     isPmSelected: isPmSelected,
@@ -151,10 +172,19 @@ function TimePicker(_ref) {
     wrapperHeight: wrapperHeight,
     inputWidth: inputWidth,
     inputHeight: inputHeight,
+    inputFontSize: inputFontSize,
     backgroundColorOnBlur: backgroundColorOnBlur,
     textColorOnBlur: textColorOnBlur,
     backgroundColorOnFocus: backgroundColorOnFocus,
-    textColorOnFocus: textColorOnFocus
+    textColorOnFocus: textColorOnFocus,
+    font: font,
+    amPmButtonHeight: amPmButtonHeight,
+    amPmButtonWidth: amPmButtonWidth,
+    amPmButtonFontSize: amPmButtonFontSize,
+    amPmButtonHighlightedBackgroundColor: amPmButtonHighlightedBackgroundColor,
+    amPmButtonNonHighlightedBackgroundColor: amPmButtonNonHighlightedBackgroundColor,
+    amPmButtonHighlightedTextColor: amPmButtonHighlightedTextColor,
+    amPmButtonNonHighlightedTextColor: amPmButtonNonHighlightedTextColor
   }));
 }
 
