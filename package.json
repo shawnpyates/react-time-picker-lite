@@ -1,6 +1,6 @@
 {
   "name": "react-time-picker-lite",
-  "version": "0.1.0",
+  "version": "1.0.0-4",
   "private": false,
   "babel": {
     "presets": [
@@ -8,12 +8,17 @@
       "@babel/preset-react"
     ]
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:shawnpyates/react-time-picker-lite.git"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject",
-    "lint": "./node_modules/.bin/eslint src --fix",
+    "lint": "./node_modules/.bin/eslint src",
+    "lint-fix": "./node_modules/.bin/eslint src --fix",
     "publish:npm": "rm -rf dist && mkdir dist &&  babel ./src -d dist --copy-files"
   },
   "browserslist": {
@@ -29,8 +34,6 @@
     ]
   },
   "dependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
     "styled-components": "^4.4.1"
   },
   "devDependencies": {
@@ -47,6 +50,8 @@
     "eslint-plugin-react": "^7.17.0",
     "husky": "^3.1.0",
     "jest": "^24.9.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "react-scripts": "3.3.0"
   },
   "jest": {
