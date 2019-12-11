@@ -75,11 +75,12 @@ function TimePickerUi({
         onKeyUp={handleTimePickerKeyUp}
         placeholder={placeholderText}
         type="text"
-        value={
+        readOnly
+        value={(
           isTimePickerEnabled
-            ? timeCharsArray.join("")
+            ? timeCharsArray.join('')
             : timeCharsString || placeholderText
-        }
+        )}
       />
       {!shouldUse24HourMode
       && (

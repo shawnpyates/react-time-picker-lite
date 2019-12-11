@@ -15,8 +15,6 @@ const get24HourTime = (timeString, isPm) => {
   return timeString.replace(hourColumn, twoCharHourColumn);
 };
 
-const createFinalTimestamp = (date, time) => date.replace('T12:00:00', ` ${time}:00`);
-
 // allow 06-09 and 16-19 (valid hour values)
 // allow x1-x5 (e.g. 95 if user wants 9:50)
 // do not allow x6-x9 where x > 1 (e.g. 29, 39, 49, etc.)
@@ -103,7 +101,6 @@ const createInputsFromExistingTimeVals = (timeScheduled) => {
 module.exports = {
   addTimeChar,
   convertTo12HourFormat,
-  createFinalTimestamp,
   createInputsFromExistingTimeVals,
   deleteTimeChar,
   formatTimeChars,
