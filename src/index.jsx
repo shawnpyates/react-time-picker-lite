@@ -13,6 +13,7 @@ import {
 } from './timeInputHandlers';
 
 const DELETE_KEY_CODE = 8;
+const SPACE_BAR_KEY_CODE = 32;
 const VALID_TIME_INPUT = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/;
 
 const getUpdatedTimeChars = (charArr, charStr) => {
@@ -74,7 +75,8 @@ function TimePicker({
     }
 
     // prevent input of chars that will create an invalid time input
-    if (isInvalidTimeInput(key, timeCharsArray)) {
+    // reject space bar click
+    if (isInvalidTimeInput(key, timeCharsArray) || keyCode === SPACE_BAR_KEY_CODE) {
       return;
     }
 
