@@ -7,8 +7,6 @@ A simple, lightweight React time picker.
 * Supports typed input only (no dropdowns).
 * Rejects input characters that would create an invalid time sting, and resets if input is not a complete, valid time string when unfocussed.
 
-Demo coming soon.
-
 ## Installation
 
 `npm install react-time-picker-lite`
