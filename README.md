@@ -6,6 +6,7 @@ A simple, lightweight React time picker. Requires React 16.8.0 or higher.
 
 * Supports typed input only (no dropdowns).
 * Rejects input characters that would create an invalid time sting, and resets if input is not a complete, valid time string when unfocussed.
+* [Try demo here](https://codesandbox.io/s/react-time-picker-lite-example-ikk4y)
 
 ## Installation
 
