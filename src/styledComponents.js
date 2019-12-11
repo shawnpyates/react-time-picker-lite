@@ -27,6 +27,10 @@ const AmPmButton = styled.button`
   `}
 `;
 
+const AmPmButtonContainer = styled.div`
+  text-align: center;
+`;
+
 const TimePickerWrapper = styled.div`
   display: inline-block;
 
@@ -43,8 +47,6 @@ const TimePickerInput = styled.input`
   height: 20px;
   border-radius: 3px;
   border: 1px solid #CCC;
-  color: #FFF;
-  background-color: #000080;
   text-align: center;
   font-weight: 400;
   color: transparent;
@@ -66,6 +68,7 @@ const TimePickerInput = styled.input`
 
 module.exports = {
   AmPmButton,
+  AmPmButtonContainer,
   TimePickerWrapper,
   TimePickerInput,
 };

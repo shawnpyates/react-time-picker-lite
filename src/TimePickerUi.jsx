@@ -2,6 +2,7 @@ import React from "react";
 
 import {
   AmPmButton,
+  AmPmButtonContainer,
   TimePickerWrapper,
   TimePickerInput,
 } from './styledComponents';
@@ -82,10 +83,10 @@ function TimePickerUi({
       />
       {!shouldUse24HourMode
       && (
-        <div>
+        <AmPmButtonContainer>
           {getAmPmButton({ isPm: false })}
           {getAmPmButton({ isPm: true })}
-        </div>
+        </AmPmButtonContainer>
       )}
     </TimePickerWrapper>
   );
