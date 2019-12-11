@@ -2,7 +2,7 @@
 
 ![](https://res.cloudinary.com/dcupoxygs/image/upload/v1576028452/react-time-picker/demo2.gif)
 
-A simple, lightweight React time picker.
+A simple, lightweight React time picker. Requires React 16.8.0 or higher.
 
 * Supports typed input only (no dropdowns).
 * Rejects input characters that would create an invalid time sting, and resets if input is not a complete, valid time string when unfocussed.
