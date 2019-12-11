@@ -1,6 +1,6 @@
 # react-time-picker-lite
 
-![](https://res.cloudinary.com/dcupoxygs/image/upload/v1576028452/react-time-picker/demo2.gif)
+![](https://res.cloudinary.com/dcupoxygs/image/upload/v1576104565/react-time-picker/demo3.gif)
 
 A simple, lightweight React time picker. Requires React 16.8.0 or higher.
 
@@ -22,8 +22,8 @@ function App() {
   const [timeMessage, setTimeMessage] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   
-  const handleSuccess = (timeString) => {
-    setTimeMessage(`Time is set to ${timeString}.`);
+  const handleSuccess = (hhmmString) => {
+    setTimeMessage(`Time is set to ${hhmmString}.`);
     setErrorMessage(null);
   };
 
@@ -67,5 +67,5 @@ function App() {
 |amPmButtonHighlightedTextColor|Color of AM/PM button text when selected|String|'#FFF' (white)|
 |amPmButtonNonHighlightedTextColor|Color of AM/PM button text when unselected|String|'#000' (black)|
 |onError|Function that is called when input is reset due to invalid time value|Function|() => null|
-|onSuccess|Function that is called when input is unfocussed with valid time value|Function|() => null|
+|onSuccess|Function that is called when input is unfocussed with valid time value. Includes 'HH:mm' (in 24-hour format) as argument|Function|() => null|
 |shouldUse24HourMode|Allows input to use 24 hour time (hides AM/PM buttons if set to true)|Boolean|false|
