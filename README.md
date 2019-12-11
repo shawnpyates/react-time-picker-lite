@@ -40,7 +40,7 @@ function App() {
       />
       {timeMessage || errorMessage || ''}
     </div>
-  )
+  );
 }
 ```
 
@@ -67,5 +67,5 @@ function App() {
 |amPmButtonHighlightedTextColor|Color of AM/PM button text when selected|String|'#FFF' (white)|
 |amPmButtonNonHighlightedTextColor|Color of AM/PM button text when unselected|String|'#000' (black)|
 |onError|Function that is called when input is reset due to invalid time value|Function|() => null|
-|onError|Function that is called when input is unfocussed with valid time value|Function|() => null|
+|onSuccess|Function that is called when input is unfocussed with valid time value|Function|() => null|
 |shouldUse24HourMode|Allows input to use 24 hour time (hides AM/PM buttons if set to true)|Boolean|false|
